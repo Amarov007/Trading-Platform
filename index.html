@@ -3,108 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AMAROV007 - منصة تداول متقدمة وموقع شخصي تعريفي">
-    <title>AMAROV007 | منصة التداول المتقدمة</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <title>موقعي الشخصي | السيرة الذاتية</title>
+    <!-- استيراد خط Cairo من جوجل -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
-        
+        /* إعدادات التصميم العامة */
+        :root {
+            --primary-color: #2563eb; /* اللون الأزرق الأساسي */
+            --secondary-color: #1e293b; /* اللون الداكن للBackground */
+            --text-color: #334155;
+            --light-bg: #f8fafc;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
         }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+
         body {
-            color: #f0f0f0;
-            overflow-x: hidden;
-            font-family: 'Cairo', 'Inter', sans-serif;
-            background-color: #0a0e27;
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.6;
         }
-        
-        body::before {
-            content: '';
+
+        /* الهيدر وشريط التنقل */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.05"/></pattern></defs><rect width="1920" height="1080" fill="%23001a4d"/><rect width="1920" height="1080" fill="url(%23grid)"/></svg>');
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.15;
-            z-index: 0;
-            pointer-events: none;
-        }
-        
-        body::after {
-            content: '';
-            position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.90) 0%, rgba(19, 29, 60, 0.93) 50%, rgba(26, 40, 80, 0.90) 100%);
-            z-index: 0;
-            pointer-events: none;
+            z-index: 1000;
         }
-        
-        .content-wrapper {
-            position: relative;
-            z-index: 1;
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        .hero-text {
-            background: linear-gradient(135deg, #00ccff 0%, #0099ff 50%, #0066ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
         }
-        
-        .card-gradient {
-            background: linear-gradient(145deg, rgba(15, 21, 53, 0.85), rgba(10, 14, 39, 0.95));
-            border: 1px solid rgba(0, 153, 255, 0.15);
-            backdrop-filter: blur(10px);
+
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, #0066ff, #0099ff);
-            color: white;
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-color);
             font-weight: 600;
-            padding: 12px 28px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.4);
-            background: linear-gradient(90deg, #0052cc, #0073cc);
-        }
-        
-        .nav-link {
-            color: #a0a0b0;
             transition: color 0.3s;
-            cursor: pointer;
         }
-        
-        .nav-link:hover {
-            color: #00ccff;
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
-        
-        .glow {
-            box-shadow: 0 0 30px rgba(0, 102, 255, 0.3);
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            padding: 180px 20px 100px 20px;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+            text-align: center;
         }
-        
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #64748b;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* قسم الخدمات أو المميزات */
+        .services {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* قسم تواصل معنا */
+        .contact {
+            background-color: var(--light-bg);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* الفوتر */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* التوافق مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .nav-links { display: none; } /* يمكن تطويرها لقائمة برجر لاحقاً */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">مُطوّر/مُصمّم</a>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#services">الخدمات</a></li>
+                <li><a href="#contact">تواصل معي</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section id="home" class="hero">
+        <h1>مرحباً، أنا <span>اسمك هنا</span></h1>
+        <p>أنا متخصص في تقديم الحلول الرقمية وبناء المواقع الإلكترونية الاحترافية التي تساعدك على نمو أعمالك.</p>
+        <a href="#contact" class="btn">ابدأ مشروعك الآن</a>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section id="services" class="services">
+        <h2 class="section-title">خدماتي المتميزة</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>تطوير المواقع</h3>
+                <p>بناء مواقع سريعة، آمنة ومتوافقة مع جميع الشاشات والهواتف الذكية.</p>
+            </div>
+            <div class="service-card">
+                <h3>تصميم واجهات المستخدم</h3>
+                <p>تصميم واجهات جذابة ومريحة للمستخدم (UI/UX) تضمن تجربة تصفح مثالية.</p>
+            </div>
+            <div class="service-card">
+                <h3>تحسين محركات البحث</h3>
+                <p>تهيئة موقعك ليتصدر نتائج البحث في جوجل (SEO) وجلب المزيد من الزوار.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التواصل -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">دعنا نعمل معاً</h2>
+        <p class="contact-info">هل لديك مشروع وتبحث عن محترف لتنفيذه؟ لا تتردد في التواصل معي.</p>
+        <a href="mailto:your-email@example.com" class="btn">أرسل لي بريداً إلكترونياً</a>
+    </section>
+
+    <!-- الفوتر -->
+    <footer>
+        <p>جميع الحقوق محفوظة © 2026 | تم التطوير بكل حب</p>
+    </footer>
+
+</body>
+</html>
         .feature-icon {
             background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 153, 255, 0.1));
             border-radius: 14px;
