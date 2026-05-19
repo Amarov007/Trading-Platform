@@ -28,7 +28,6 @@
             background-color: #0a0e27;
         }
         
-        /* Background Grid Setup */
         body::before {
             content: '';
             position: fixed;
@@ -46,7 +45,6 @@
             pointer-events: none;
         }
         
-        /* Dark Overlay */
         body::after {
             content: '';
             position: fixed;
@@ -108,6 +106,118 @@
         }
         
         .feature-icon {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 153, 255, 0.1));
+            border-radius: 14px;
+            padding: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        
+        .number-counter {
+            font-weight: 700;
+            background: linear-gradient(90deg, #00ccff, #0066ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 102, 255, 0.4); }
+            50% { box-shadow: 0 0 0 20px rgba(0, 102, 255, 0); }
+        }
+        
+        /* تفعيل حجم مرن وثابت للصورة الشخصية لتجنب الانهيار الهيكلي */
+        .profile-image-container {
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 1/1;
+            position: relative;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 3px solid rgba(0, 153, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.2);
+            background-color: rgba(15, 21, 53, 0.5);
+        }
+        
+        section {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <nav class="sticky top-0 z-50 card-gradient py-4 px-4 lg:px-12 border-b border-blue-900/30 backdrop-blur-xl">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <img src="img_1779227577708.png" alt="AMAROV007" class="w-10 h-10 rounded-lg object-cover border border-blue-500/30 bg-slate-900">
+                    <span class="text-xl lg:text-2xl font-bold hero-text mr-2">AMAROV007</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="#about" class="nav-link">عني</a>
+                    <a href="#skills" class="nav-link">مهاراتي</a>
+                    <a href="#projects" class="nav-link">مشاريعي</a>
+                    <a href="#contact" class="nav-link">تواصل معي</a>
+                    <button class="btn-primary mr-4">ابدأ الآن</button>
+                </div>
+                <button id="menuBtn" class="md:hidden text-gray-300 p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            
+            <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-64 card-gradient p-6 border-l border-blue-900/30 backdrop-blur-xl z-50">
+                <div class="flex justify-between items-center mb-10">
+                    <span class="text-xl font-bold hero-text">AMAROV007</span>
+                    <button id="closeMenu" class="text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="#about" class="nav-link text-lg">عني</a>
+                    <a href="#skills" class="nav-link text-lg">مهاراتي</a>
+                    <a href="#projects" class="nav-link text-lg">مشاريعي</a>
+                    <a href="#contact" class="nav-link text-lg">تواصل معي</a>
+                    <button class="btn-primary mt-4 w-full">ابدأ الآن</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="py-12 lg:py-24 px-4 lg:px-12 relative overflow-hidden">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl opacity-30"></div>
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-right order-2 lg:order-1">
+                        <h1 class="text-4xl lg:text-7xl font-bold mb-6 leading-tight">
+                            <span class="hero-text">AMAROV007</span><br/>
+                            <span class="text-white">الرائد في التداول</span>
+                        </h1>
+                        <p class="text-lg lg:text-xl text-gray-300 mb-8 leading-relaxed">
+                            منصة تداول متقدمة مع تكنولوجيا الذكاء الاصطناعي، أدوات احترافية، وأمان من الدرجة الأولى. أنا أساعدك على تحقيق أهدافك المالية بثقة واحترافية.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <button class="btn-primary glow text
             background: linear-gradient(135deg, rgba(0, 102, 255, 0.2), rgba(0, 153, 255, 0.1));
             border-radius: 14px;
             padding: 16px;
