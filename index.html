@@ -18,17 +18,64 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 50%, #131d3c 100%);
             color: #f0f0f0;
             overflow-x: hidden;
             font-family: 'Inter', 'Cairo', sans-serif;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="1600" fill="%230a0e27"/><rect width="1200" height="1600" fill="url(%23grid)"/></svg>');
         }
         
-        html[dir="rtl"] { direction: rtl; }
+        /* Background image with overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000"><image href="..." x="0" y="0" width="800" height="1000"/></svg>');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.08;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.85) 0%, rgba(19, 29, 60, 0.9) 50%, rgba(26, 40, 80, 0.85) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            background: linear-gradient(135deg, #00ccff 0%, #0099ff 50%, #0066ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
         
         .gradient-bg {
-            background: linear-gradient(135deg, #0a0e27 0%, #131d3c 50%, #1a2850 100%);
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(19, 29, 60, 0.95) 50%, rgba(26, 40, 80, 0.9) 100%);
         }
         
         .blue-gradient {
@@ -36,7 +83,7 @@
         }
         
         .card-gradient {
-            background: linear-gradient(145deg, rgba(15, 21, 53, 0.8), rgba(10, 14, 39, 0.9));
+            background: linear-gradient(145deg, rgba(15, 21, 53, 0.85), rgba(10, 14, 39, 0.95));
             border: 1px solid rgba(0, 153, 255, 0.15);
             backdrop-filter: blur(10px);
         }
@@ -119,346 +166,347 @@
             font-size: 24px;
         }
         
-        .hero-text {
-            background: linear-gradient(135deg, #00ccff 0%, #0099ff 50%, #0066ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        section {
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
-<body class="gradient-bg">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 card-gradient py-4 px-6 lg:px-12 border-b border-blue-900/30">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bing-x-logo">BX</div>
-                <span class="text-2xl font-bold hero-text">AMAROV007</span>
-            </div>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="nav-link">عني</a>
-                <a href="#skills" class="nav-link">مهاراتي</a>
-                <a href="#projects" class="nav-link">مشاريعي</a>
-                <a href="#contact" class="nav-link">تواصل معي</a>
-                <button class="btn-primary">ابدأ الآن</button>
-            </div>
-            <button id="menuBtn" class="md:hidden text-gray-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-64 card-gradient p-6 border-l border-blue-900/30">
-            <div class="flex justify-between items-center mb-10">
-                <span class="text-xl font-bold hero-text">AMAROV007</span>
-                <button id="closeMenu" class="text-gray-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="flex flex-col space-y-6">
-                <a href="#about" class="nav-link text-lg">عني</a>
-                <a href="#skills" class="nav-link text-lg">مهاراتي</a>
-                <a href="#projects" class="nav-link text-lg">مشاريعي</a>
-                <a href="#contact" class="nav-link text-lg">تواصل معي</a>
-                <button class="btn-primary mt-4 w-full">ابدأ الآن</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="py-24 px-6 lg:px-12 relative overflow-hidden">
-        <div class="absolute top-20 right-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl opacity-30"></div>
-        <div class="container mx-auto max-w-6xl relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
-                        <span class="hero-text">AMAROV007</span><br/>
-                        <span class="text-white">الرائد في التداول</span>
-                    </h1>
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                        منصة تداول متقدمة مع تكنولوجيا الذكاء الاصطناعي، أدوات احترافية، وأمان من الدرجة الأولى. أنا أساعدك على تحقيق أهدافك المالية بثقة واحترافية.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="btn-primary glow text-lg px-8 py-4">ابدأ التداول</button>
-                        <button class="px-8 py-4 rounded-lg border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition">استكشف المزيد</button>
-                    </div>
-                </div>
-                <div class="flex justify-center">
-                    <div class="relative w-80 h-80">
-                        <div class="absolute inset-0 blue-gradient rounded-2xl opacity-20 blur-xl"></div>
-                        <div class="absolute inset-0 card-gradient rounded-2xl border-2 border-blue-500/30 flex items-center justify-center pulse-ring">
-                            <div class="text-center">
-                                <div class="bing-x-logo mx-auto mb-6">BX</div>
-                                <h2 class="text-3xl font-bold text-white">AMAROV007</h2>
-                                <p class="text-blue-400 mt-2">منصة التداول الموثوقة</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center card-gradient p-8 rounded-xl">
-                    <div class="text-5xl number-counter mb-2">500K+</div>
-                    <p class="text-gray-400">عملية تداول يومية</p>
-                </div>
-                <div class="text-center card-gradient p-8 rounded-xl">
-                    <div class="text-5xl number-counter mb-2">50+</div>
-                    <p class="text-gray-400">أصل رقمي مدعوم</p>
-                </div>
-                <div class="text-center card-gradient p-8 rounded-xl">
-                    <div class="text-5xl number-counter mb-2">99.9%</div>
-                    <p class="text-gray-400">معدل الأمان</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6 lg:px-12">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-4xl font-bold text-center mb-16">
-                <span class="hero-text">من أنا</span>
-            </h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="card-gradient p-8 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-400">رحلتي المهنية</h3>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        أنا AMAROV007، متخصص في تطوير منصات التداول والتكنولوجيا المالية. مع أكثر من 10 سنوات من الخبرة في مجال البرمجة والتمويل الرقمي.
-                    </p>
-                    <p class="text-gray-300 mb-4 leading-relaxed">
-                        بدأت رحلتي كمطور ويب، ثم توسعت اهتماماتي ليشمل تطوير منصات التداول والعملات الرقمية. أنا شغوف بإنشاء حلول تقنية تجعل التداول آمناً وسهلاً للجميع.
-                    </p>
-                    <p class="text-gray-300 leading-relaxed">
-                        مع شراكتي مع BING X، استطعت دمج أفضل الممارسات العالمية في منصة تداول حديثة وموثوقة.
-                    </p>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-400">إنجازاتي</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
-                            <div>
-                                <h4 class="font-bold text-white">تطوير منصات تداول</h4>
-                                <p class="text-gray-400 text-sm">أنشأت أكثر من 20 منصة تداول رقمية</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
-                            <div>
-                                <h4 class="font-bold text-white">تقنية آمنة</h4>
-                                <p class="text-gray-400 text-sm">تطبيق معايير أمان 256-bit SSL و Multi-Sig</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
-                            <div>
-                                <h4 class="font-bold text-white">فريق عالمي</h4>
-                                <p class="text-gray-400 text-sm">قيادة فريق من 50+ مطور ومتخصص</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
-                            <div>
-                                <h4 class="font-bold text-white">جوائز وتكريمات</h4>
-                                <p class="text-gray-400 text-sm">أفضل منصة تداول مبتكرة 2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 lg:px-12">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-4xl font-bold text-center mb-16">
-                <span class="hero-text">مهاراتي</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-code text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">البرمجة</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>JavaScript & TypeScript</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>React & Vue.js</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Node.js & Python</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Blockchain & Web3</li>
-                    </ul>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-shield-alt text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">الأمان والتشفير</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>SSL/TLS Certificates</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Multi-Signature Wallets</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>DDoS Protection</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Penetration Testing</li>
-                    </ul>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-chart-line text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">التحليل المالي</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التحليل الفني</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>علم البيانات</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Machine Learning</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التنبؤ بالأسعار</li>
-                    </ul>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-database text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">قواعد البيانات</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>PostgreSQL & MongoDB</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Redis & Memcached</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Data Optimization</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Backup & Recovery</li>
-                    </ul>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-cloud text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">البنية السحابية</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>AWS & Azure</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Docker & Kubernetes</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>CI/CD Pipeline</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>DevOps</li>
-                    </ul>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl">
-                    <div class="feature-icon mb-6">
-                        <i class="fas fa-users text-2xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4">المهارات الناعمة</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>القيادة والإدارة</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التواصل الفعال</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>حل المشاكل</li>
-                        <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التعاون والعمل الجماعي</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 lg:px-12">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-4xl font-bold text-center mb-16">
-                <span class="hero-text">مشاريعي</span>
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
-                    <div class="flex items-center mb-4">
-                        <div class="bing-x-logo">BX</div>
-                        <h3 class="text-2xl font-bold mr-4">منصة BING X</h3>
-                    </div>
-                    <p class="text-gray-300 mb-4">منصة تداول متقدمة مع تكنولوجيا الذكاء الاصطناعي</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">React</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Node.js</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Blockchain</span>
-                    </div>
-                    <button class="btn-primary w-full">عرض المشروع</button>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
-                    <h3 class="text-2xl font-bold mb-4">منصة التداول الذكية</h3>
-                    <p class="text-gray-300 mb-4">تطبيق تداول بتنبؤات آلية باستخدام AI</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Python</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Machine Learning</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Real-time Data</span>
-                    </div>
-                    <button class="btn-primary w-full">عرض المشروع</button>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
-                    <h3 class="text-2xl font-bold mb-4">محفظة العملات الرقمية</h3>
-                    <p class="text-gray-300 mb-4">محفظة آمنة مع دعم متعدد التوقيع</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Web3</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Smart Contracts</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Security</span>
-                    </div>
-                    <button class="btn-primary w-full">عرض المشروع</button>
-                </div>
-                <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
-                    <h3 class="text-2xl font-bold mb-4">نظام إدارة المحفظة</h3>
-                    <p class="text-gray-300 mb-4">لوحة تحكم متقدمة لإدارة الاستثمارات</p>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Vue.js</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Analytics</span>
-                        <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Dashboard</span>
-                    </div>
-                    <button class="btn-primary w-full">عرض المشروع</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 lg:px-12">
-        <div class="container mx-auto max-w-4xl">
-            <div class="text-center card-gradient p-12 rounded-3xl">
-                <h2 class="text-4xl font-bold mb-6">
-                    <span class="hero-text">تواصل معي</span>
-                </h2>
-                <p class="text-xl text-gray-300 mb-10">هل لديك سؤال أو تريد التعاون؟ أنا هنا للاستماع إليك</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
-                    <div>
-                        <i class="fas fa-envelope text-3xl text-blue-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">البريد الإلكتروني</h4>
-                        <a href="mailto:hello@amarov007.com" class="text-blue-400 hover:text-blue-300">hello@amarov007.com</a>
-                    </div>
-                    <div>
-                        <i class="fas fa-phone text-3xl text-blue-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">الهاتف</h4>
-                        <a href="tel:+966501234567" class="text-blue-400 hover:text-blue-300">+966 50 123 4567</a>
-                    </div>
-                    <div>
-                        <i class="fas fa-map-marker-alt text-3xl text-blue-400 mb-4"></i>
-                        <h4 class="font-bold text-lg mb-2">الموقع</h4>
-                        <p class="text-gray-300">السعودية</p>
-                    </div>
-                </div>
-                <button class="btn-primary glow px-10 py-4 text-lg">أرسل لي رسالة</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="border-t border-blue-900/30 py-12 px-6 lg:px-12">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center">
-                <div class="flex items-center justify-center space-x-3 mb-4">
+<body>
+    <div class="content-wrapper">
+        <!-- Navigation -->
+        <nav class="sticky top-0 z-50 card-gradient py-4 px-6 lg:px-12 border-b border-blue-900/30 backdrop-blur-xl">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="flex items-center space-x-3">
                     <div class="bing-x-logo">BX</div>
                     <span class="text-2xl font-bold hero-text">AMAROV007</span>
                 </div>
-                <p class="text-gray-500 mb-6">منصة التداول المتقدمة مع أفضل الخدمات والأمان</p>
-                <div class="flex justify-center space-x-6 mb-6">
-                    <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-twitter text-2xl"></i></a>
-                    <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-linkedin text-2xl"></i></a>
-                    <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-github text-2xl"></i></a>
-                    <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-telegram text-2xl"></i></a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link">عني</a>
+                    <a href="#skills" class="nav-link">مهاراتي</a>
+                    <a href="#projects" class="nav-link">مشاريعي</a>
+                    <a href="#contact" class="nav-link">تواصل معي</a>
+                    <button class="btn-primary">ابدأ الآن</button>
                 </div>
-                <div class="border-t border-blue-900/30 pt-6">
-                    <p class="text-gray-500 text-sm">&copy; 2025 AMAROV007. جميع الحقوق محفوظة.</p>
-                    <p class="text-gray-600 text-xs mt-2">تطوير بواسطة AMAROV007 | مع شراكة BING X</p>
+                <button id="menuBtn" class="md:hidden text-gray-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 h-full w-64 card-gradient p-6 border-l border-blue-900/30 backdrop-blur-xl">
+                <div class="flex justify-between items-center mb-10">
+                    <span class="text-xl font-bold hero-text">AMAROV007</span>
+                    <button id="closeMenu" class="text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-6">
+                    <a href="#about" class="nav-link text-lg">عني</a>
+                    <a href="#skills" class="nav-link text-lg">مهاراتي</a>
+                    <a href="#projects" class="nav-link text-lg">مشاريعي</a>
+                    <a href="#contact" class="nav-link text-lg">تواصل معي</a>
+                    <button class="btn-primary mt-4 w-full">ابدأ الآن</button>
                 </div>
             </div>
-        </div>
-    </footer>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="py-24 px-6 lg:px-12 relative overflow-hidden">
+            <div class="absolute top-20 right-10 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl opacity-30"></div>
+            <div class="container mx-auto max-w-6xl relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                            <span class="hero-text">AMAROV007</span><br/>
+                            <span class="text-white">الرائد في التداول</span>
+                        </h1>
+                        <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                            منصة تداول متقدمة مع تكنولوجيا الذكاء الاصطناعي، أدوات احترافية، وأمان من الدرجة الأولى. أنا أساعدك على تحقيق أهدافك المالية بثقة واحترافية.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-primary glow text-lg px-8 py-4">ابدأ التداول</button>
+                            <button class="px-8 py-4 rounded-lg border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition">استكشف المزيد</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <div class="relative w-80 h-80">
+                            <div class="absolute inset-0 blue-gradient rounded-2xl opacity-20 blur-xl"></div>
+                            <div class="absolute inset-0 card-gradient rounded-2xl border-2 border-blue-500/30 flex items-center justify-center pulse-ring">
+                                <div class="text-center">
+                                    <div class="bing-x-logo mx-auto mb-6">BX</div>
+                                    <h2 class="text-3xl font-bold text-white">AMAROV007</h2>
+                                    <p class="text-blue-400 mt-2">منصة التداول الموثوقة</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center card-gradient p-8 rounded-xl">
+                        <div class="text-5xl number-counter mb-2" id="counter1">500</div>
+                        <p class="text-gray-400">عملية تداول يومية</p>
+                    </div>
+                    <div class="text-center card-gradient p-8 rounded-xl">
+                        <div class="text-5xl number-counter mb-2" id="counter2">50</div>
+                        <p class="text-gray-400">أصل رقمي مدعوم</p>
+                    </div>
+                    <div class="text-center card-gradient p-8 rounded-xl">
+                        <div class="text-5xl number-counter mb-2" id="counter3">99.9</div>
+                        <p class="text-gray-400">معدل الأمان</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6 lg:px-12">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-16">
+                    <span class="hero-text">من أنا</span>
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="card-gradient p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-4 text-blue-400">رحلتي المهنية</h3>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            أنا AMAROV007، متخصص في تطوير منصات التداول والتكنولوجيا المالية. مع أكثر من 10 سنوات من الخبرة في مجال البرمجة والتمويل الرقمي.
+                        </p>
+                        <p class="text-gray-300 mb-4 leading-relaxed">
+                            بدأت رحلتي كمطور ويب، ثم توسعت اهتماماتي ليشمل تطوير منصات التداول والعملات الرقمية. أنا شغوف بإنشاء حلول تقنية تجعل التداول آمناً وسهلاً للجميع.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            مع شراكتي مع BING X، استطعت دمج أفضل الممارسات العالمية في منصة تداول حديثة وموثوقة.
+                        </p>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">إنجازاتي</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
+                                <div>
+                                    <h4 class="font-bold text-white">تطوير منصات تداول</h4>
+                                    <p class="text-gray-400 text-sm">أنشأت أكثر من 20 منصة تداول رقمية</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
+                                <div>
+                                    <h4 class="font-bold text-white">تقنية آمنة</h4>
+                                    <p class="text-gray-400 text-sm">تطبيق معايير أمان 256-bit SSL و Multi-Sig</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
+                                <div>
+                                    <h4 class="font-bold text-white">فريق عالمي</h4>
+                                    <p class="text-gray-400 text-sm">قيادة فريق من 50+ مطور ومتخصص</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-4"></div>
+                                <div>
+                                    <h4 class="font-bold text-white">جوائز وتكريمات</h4>
+                                    <p class="text-gray-400 text-sm">أفضل منصة تداول مبتكرة 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-6 lg:px-12">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-16">
+                    <span class="hero-text">مهاراتي</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-code text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">البرمجة</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>JavaScript & TypeScript</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>React & Vue.js</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Node.js & Python</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Blockchain & Web3</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-shield-alt text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">الأمان والتشفير</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>SSL/TLS Certificates</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Multi-Signature Wallets</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>DDoS Protection</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Penetration Testing</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-chart-line text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">التحليل المالي</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التحليل الفني</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>علم البيانات</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Machine Learning</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التنبؤ بالأسعار</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-database text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">قواعد البيانات</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>PostgreSQL & MongoDB</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Redis & Memcached</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Data Optimization</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Backup & Recovery</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-cloud text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">البنية السحابية</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>AWS & Azure</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>Docker & Kubernetes</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>CI/CD Pipeline</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>DevOps</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-users text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">المهارات الناعمة</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>القيادة والإدارة</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التواصل الفعال</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>حل المشاكل</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>التعاون والعمل الجماعي</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-6 lg:px-12">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-16">
+                    <span class="hero-text">مشاريعي</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="flex items-center mb-4">
+                            <div class="bing-x-logo">BX</div>
+                            <h3 class="text-2xl font-bold mr-4">منصة BING X</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">منصة تداول متقدمة مع تكنولوجيا الذكاء الاصطناعي</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Blockchain</span>
+                        </div>
+                        <button class="btn-primary w-full">عرض المشروع</button>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <h3 class="text-2xl font-bold mb-4">منصة التداول الذكية</h3>
+                        <p class="text-gray-300 mb-4">تطبيق تداول بتنبؤات آلية باستخدام AI</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Machine Learning</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Real-time Data</span>
+                        </div>
+                        <button class="btn-primary w-full">عرض المشروع</button>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <h3 class="text-2xl font-bold mb-4">محفظة العملات الرقمية</h3>
+                        <p class="text-gray-300 mb-4">محفظة آمنة مع دعم متعدد التوقيع</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Web3</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Smart Contracts</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Security</span>
+                        </div>
+                        <button class="btn-primary w-full">عرض المشروع</button>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <h3 class="text-2xl font-bold mb-4">نظام إدارة المحفظة</h3>
+                        <p class="text-gray-300 mb-4">لوحة تحكم متقدمة لإدارة الاستثمارات</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Vue.js</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Analytics</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Dashboard</span>
+                        </div>
+                        <button class="btn-primary w-full">عرض المشروع</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-6 lg:px-12">
+            <div class="container mx-auto max-w-4xl">
+                <div class="text-center card-gradient p-12 rounded-3xl">
+                    <h2 class="text-4xl font-bold mb-6">
+                        <span class="hero-text">تواصل معي</span>
+                    </h2>
+                    <p class="text-xl text-gray-300 mb-10">هل لديك سؤال أو تريد التعاون؟ أنا هنا للاستماع إليك</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                        <div>
+                            <i class="fas fa-envelope text-3xl text-blue-400 mb-4"></i>
+                            <h4 class="font-bold text-lg mb-2">البريد الإلكتروني</h4>
+                            <a href="mailto:hello@amarov007.com" class="text-blue-400 hover:text-blue-300">hello@amarov007.com</a>
+                        </div>
+                        <div>
+                            <i class="fas fa-phone text-3xl text-blue-400 mb-4"></i>
+                            <h4 class="font-bold text-lg mb-2">الهاتف</h4>
+                            <a href="tel:+966501234567" class="text-blue-400 hover:text-blue-300">+966 50 123 4567</a>
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt text-3xl text-blue-400 mb-4"></i>
+                            <h4 class="font-bold text-lg mb-2">الموقع</h4>
+                            <p class="text-gray-300">السعودية</p>
+                        </div>
+                    </div>
+                    <button class="btn-primary glow px-10 py-4 text-lg">أرسل لي رسالة</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-blue-900/30 py-12 px-6 lg:px-12">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center">
+                    <div class="flex items-center justify-center space-x-3 mb-4">
+                        <div class="bing-x-logo">BX</div>
+                        <span class="text-2xl font-bold hero-text">AMAROV007</span>
+                    </div>
+                    <p class="text-gray-500 mb-6">منصة التداول المتقدمة مع أفضل الخدمات والأمان</p>
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-linkedin text-2xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-github text-2xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-300"><i class="fab fa-telegram text-2xl"></i></a>
+                    </div>
+                    <div class="border-t border-blue-900/30 pt-6">
+                        <p class="text-gray-500 text-sm">&copy; 2025 AMAROV007. جميع الحقوق محفوظة.</p>
+                        <p class="text-gray-600 text-xs mt-2">تطوير بواسطة AMAROV007 | مع شراكة BING X</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
         // Mobile Menu Toggle
@@ -493,22 +541,19 @@
             let timer = setInterval(() => {
                 current += increment;
                 if (current >= finalValue) {
-                    element.innerText = finalValue.toLocaleString('ar-SA');
+                    element.innerText = finalValue.toLocaleString('ar-SA') + (elementId === 'counter3' ? '%' : 'K+');
                     clearInterval(timer);
                 } else {
-                    element.innerText = Math.floor(current).toLocaleString('ar-SA');
+                    element.innerText = Math.floor(current).toLocaleString('ar-SA') + (elementId === 'counter3' ? '%' : 'K+');
                 }
             }, 16);
         }
         
         // Initialize counters when page loads
         window.addEventListener('load', () => {
-            document.querySelectorAll('.number-counter').forEach((el, index) => {
-                const finalValue = parseInt(el.textContent.replace(/[^\d]/g, '')) || 0;
-                if (finalValue > 0) {
-                    animateCounter(el.id, finalValue, 2000);
-                }
-            });
+            animateCounter('counter1', 500, 2000);
+            animateCounter('counter2', 50, 2000);
+            animateCounter('counter3', 99.9, 2000);
         });
         
         // Smooth scroll for anchor links
