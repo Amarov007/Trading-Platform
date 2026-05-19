@@ -28,6 +28,7 @@
             background-color: #0a0e27;
         }
         
+        /* Background Grid Setup */
         body::before {
             content: '';
             position: fixed;
@@ -45,6 +46,7 @@
             pointer-events: none;
         }
         
+        /* Dark Overlay */
         body::after {
             content: '';
             position: fixed;
@@ -114,6 +116,7 @@
             justify-content: center;
         }
         
+        /* Mobile Menu Setup (Slide from Left for RTL layout) */
         .mobile-menu {
             transform: translateX(-100%);
             transition: transform 0.4s ease;
@@ -140,8 +143,8 @@
         }
         
         .profile-image {
-            width: 320px;
-            height: 320px;
+            width: 300px;
+            height: 300px;
             border-radius: 20px;
             object-fit: cover;
             border: 3px solid rgba(0, 153, 255, 0.3);
@@ -159,7 +162,7 @@
         <nav class="sticky top-0 z-50 card-gradient py-4 px-6 lg:px-12 border-b border-blue-900/30 backdrop-blur-xl">
             <div class="container mx-auto flex justify-between items-center">
                 <div class="flex items-center space-x-3 space-x-reverse">
-                    <img src="img_1779227577708.png" alt="AMAROV007 Logo" class="w-12 h-12 rounded-lg object-cover border border-blue-500/30">
+                    <img src="img_1779227577708.png" alt="Logo" class="w-12 h-12 rounded-lg object-cover border border-blue-500/20">
                     <span class="text-2xl font-bold hero-text mr-2">AMAROV007</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
@@ -176,7 +179,7 @@
                 </button>
             </div>
             
-            <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 h-full w-64 card-gradient p-6 border-r border-blue-900/30 backdrop-blur-xl">
+            <div id="mobileMenu" class="mobile-menu fixed top-0 left-0 h-full w-64 card-gradient p-6 border-r border-blue-900/30 backdrop-blur-xl z-50">
                 <div class="flex justify-between items-center mb-10">
                     <span class="text-xl font-bold hero-text">AMAROV007</span>
                     <button id="closeMenu" class="text-gray-300">
@@ -215,11 +218,11 @@
                     <div class="flex justify-center">
                         <div class="relative w-80 h-80">
                             <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl opacity-20 blur-xl"></div>
-                            <div class="absolute inset-0 card-gradient rounded-2xl border-2 border-blue-500/30 flex items-center justify-center pulse-ring overflow-hidden">
-                                <div class="text-center w-full h-full p-4 flex flex-col justify-center items-center">
-                                    <img src="img_1779227577708.png" alt="AMAROV007 Strategic Partner" class="w-32 h-32 mx-auto mb-4 rounded-xl object-cover border border-blue-500/40 shadow-lg">
-                                    <h2 class="text-2xl font-bold text-white">AMAROV007</h2>
-                                    <p class="text-blue-400 text-sm mt-1">Official Strategic Partnership</p>
+                            <div class="absolute inset-0 card-gradient rounded-2xl border-2 border-blue-500/30 flex items-center justify-center pulse-ring">
+                                <div class="text-center">
+                                    <img src="img_1779227577708.png" alt="Partner Logo" class="w-28 h-28 mx-auto mb-6 rounded-xl object-cover border border-blue-500/30 shadow-lg">
+                                    <h2 class="text-3xl font-bold text-white">AMAROV007</h2>
+                                    <p class="text-blue-400 mt-2">Official Strategic Partnership</p>
                                 </div>
                             </div>
                         </div>
@@ -227,15 +230,15 @@
                 </div>
                 <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div class="text-center card-gradient p-8 rounded-xl">
-                        <div class="text-5xl number-counter mb-2" id="counter1">0</div>
+                        <div class="text-5xl number-counter mb-2" id="counter1">500</div>
                         <p class="text-gray-400">عملية تداول يومية</p>
                     </div>
                     <div class="text-center card-gradient p-8 rounded-xl">
-                        <div class="text-5xl number-counter mb-2" id="counter2">0</div>
+                        <div class="text-5xl number-counter mb-2" id="counter2">50</div>
                         <p class="text-gray-400">أصل رقمي مدعوم</p>
                     </div>
                     <div class="text-center card-gradient p-8 rounded-xl">
-                        <div class="text-5xl number-counter mb-2" id="counter3">0</div>
+                        <div class="text-5xl number-counter mb-2" id="counter3">99</div>
                         <p class="text-gray-400">معدل الأمان %</p>
                     </div>
                 </div>
@@ -249,7 +252,7 @@
                 </h2>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="flex justify-center">
-                        <img src="img_1779227577708.png" alt="AMAROV007 Profile Picture" class="profile-image">
+                        <img src="img_1779227577708.png" alt="Profile" class="profile-image">
                     </div>
                     <div>
                         <div class="card-gradient p-8 rounded-2xl mb-6">
@@ -284,4 +287,43 @@
                                 <div class="flex items-start">
                                     <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 ml-4"></div>
                                     <div>
-                                        <h4 class="font-bold text-white">فريق عالم
+                                        <h4 class="font-bold text-white">فريق عالمي</h4>
+                                        <p class="text-gray-400 text-sm">قيادة فريق من 50+ مطور ومتخصص</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-blue-400 rounded-full mt-2 ml-4"></div>
+                                    <div>
+                                        <h4 class="font-bold text-white">شراكة استراتيجية رسمية</h4>
+                                        <p class="text-gray-400 text-sm">Official Strategic Partnership مع BING X</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="py-20 px-6 lg:px-12">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-4xl font-bold text-center mb-16">
+                    <span class="hero-text">مهاراتي</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-code text-2xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">البرمجة</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full ml-3"></span>JavaScript & TypeScript</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full ml-3"></span>React & Vue.js</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full ml-3"></span>Node.js & Python</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-400 rounded-full ml-3"></span>Blockchain & Web3</li>
+                        </ul>
+                    </div>
+                    <div class="card-gradient p-8 rounded-2xl hover:border-blue-400 transition">
+                        <div class="feature-icon mb-6">
+                            <i class="fas fa-shield-alt text-2xl text-blue-400"></i>
+                        </div>
