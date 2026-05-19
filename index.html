@@ -6,7 +6,6 @@
     <meta name="description" content="AMAROV007 - منصة تداول متقدمة وموقع شخصي تعريفي">
     <title>AMAROV007 | منصة التداول المتقدمة</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/d3@7"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -26,14 +25,10 @@
             color: #f0f0f0;
             overflow-x: hidden;
             font-family: 'Inter', 'Cairo', sans-serif;
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="1600" fill="%230a0e27"/><rect width="1200" height="1600" fill="url(%23grid)"/></svg>');
+            background-color: #0a0e27;
         }
         
-        /* Background image with overlay */
+        /* Background Image Setup */
         body::before {
             content: '';
             position: fixed;
@@ -41,16 +36,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000"><image href="..." x="0" y="0" width="800" height="1000"/></svg>');
+            background-image: url('https://images.unsplash.com/photo-1553729783-e91953dec042?w=1920&q=80');
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.08;
+            opacity: 0.12;
             z-index: 0;
             pointer-events: none;
         }
         
+        /* Dark Overlay */
         body::after {
             content: '';
             position: fixed;
@@ -58,7 +54,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.85) 0%, rgba(19, 29, 60, 0.9) 50%, rgba(26, 40, 80, 0.85) 100%);
+            background: linear-gradient(135deg, rgba(10, 14, 39, 0.88) 0%, rgba(19, 29, 60, 0.92) 50%, rgba(26, 40, 80, 0.88) 100%);
             z-index: 0;
             pointer-events: none;
         }
@@ -72,14 +68,6 @@
             background: linear-gradient(135deg, #00ccff 0%, #0099ff 50%, #0066ff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, rgba(10, 14, 39, 0.9) 0%, rgba(19, 29, 60, 0.95) 50%, rgba(26, 40, 80, 0.9) 100%);
-        }
-        
-        .blue-gradient {
-            background: linear-gradient(135deg, #0066ff 0%, #0099ff 50%, #00ccff 100%);
         }
         
         .card-gradient {
@@ -233,7 +221,7 @@
                     </div>
                     <div class="flex justify-center">
                         <div class="relative w-80 h-80">
-                            <div class="absolute inset-0 blue-gradient rounded-2xl opacity-20 blur-xl"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl opacity-20 blur-xl"></div>
                             <div class="absolute inset-0 card-gradient rounded-2xl border-2 border-blue-500/30 flex items-center justify-center pulse-ring">
                                 <div class="text-center">
                                     <div class="bing-x-logo mx-auto mb-6">BX</div>
@@ -254,8 +242,8 @@
                         <p class="text-gray-400">أصل رقمي مدعوم</p>
                     </div>
                     <div class="text-center card-gradient p-8 rounded-xl">
-                        <div class="text-5xl number-counter mb-2" id="counter3">99.9</div>
-                        <p class="text-gray-400">معدل الأمان</p>
+                        <div class="text-5xl number-counter mb-2" id="counter3">99</div>
+                        <p class="text-gray-400">معدل الأمان %</p>
                     </div>
                 </div>
             </div>
@@ -541,10 +529,10 @@
             let timer = setInterval(() => {
                 current += increment;
                 if (current >= finalValue) {
-                    element.innerText = finalValue.toLocaleString('ar-SA') + (elementId === 'counter3' ? '%' : 'K+');
+                    element.innerText = finalValue.toLocaleString('ar-SA');
                     clearInterval(timer);
                 } else {
-                    element.innerText = Math.floor(current).toLocaleString('ar-SA') + (elementId === 'counter3' ? '%' : 'K+');
+                    element.innerText = Math.floor(current).toLocaleString('ar-SA');
                 }
             }, 16);
         }
@@ -553,7 +541,7 @@
         window.addEventListener('load', () => {
             animateCounter('counter1', 500, 2000);
             animateCounter('counter2', 50, 2000);
-            animateCounter('counter3', 99.9, 2000);
+            animateCounter('counter3', 99, 2000);
         });
         
         // Smooth scroll for anchor links
